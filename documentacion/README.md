@@ -4,9 +4,9 @@
 ****
 ### **Contentido**
 
-- [Before starting](#before-starting)
-- [Installing](#installing)
-- [How to use](#how-to-use)
+- Antes de empezar
+- Instalación
+- Cómo utilizar
 ****
 ### **Antes de empezar**
 
