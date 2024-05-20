@@ -1,7 +1,6 @@
 package co.com.url_shortener.usecase.original_url;
 
 import co.com.url_shortener.model.common.ex.ServiceException;
-import co.com.url_shortener.model.traceability.Traceability;
 import co.com.url_shortener.model.traceability.gateway.TraceabilityRepository;
 import co.com.url_shortener.model.url_shortener.gateway.UrlShortenerRepository;
 import org.junit.jupiter.api.Assertions;

@@ -27,16 +27,44 @@ Clonar el repositorio.
 $ git clone https://github.com/johanshz/url-converter-ms.git
 ```
 
+#### **Construyendo el .jar**
+Finalmente, ejecute esto para construir el .jar .
+```
+$ cd url-converter-ms
+$ ./gradlew build
+```
+****
+### **Cómo utilizar**
+
+#### **Ejecutando**
+Una vez que se haya creado el archivo jar, navegue hasta el directorio donde creó el archivo JAR.:
+
+```
+$ cd url-converter-ms\applications\app-service\build\libs
+```
+
+Luego ejecute el archivo JAR usando el siguiente comando:
+
+```
+$ java -jar ms-url-shortener.jar
+```
+
+Esto iniciará la aplicación y la pondrá a disposición en http://localhost:8080.
+
+
+
 #### **local**
 
-Una vez que la aplicación se esté ejecutando, puede probarla enviando una solicitud POST al siguiente punto final:
+Una vez que la aplicación se esté ejecutando, puede probarla enviando la siguiente solicitud POST:
 
 ```
 POST http://localhost:8080/generarUrl
 ```
 
+Recibe una URL para realizar un acortamiento.
+Reemplace el valor con la URL que desea acortar.
+Como resultado obtienes el uniqueId.
 Acepta JSON en el siguiente formato:
-
 ```
 {
     "original_url": "https://www.mercadolibre.com.co/televisor-caixun-40-c40vbfg-led-fhd-smart-google-tv/p/MCO24395719?pdp_filters=deal%3AMCO779366-1#polycard_client=homes-korribanSearchPromotions&searchVariation=MCO24395719&position=3&search_layout=grid&type=product&tracking_id=8f6fbc83-57b0-40bd-8a8c-d5d56e6ab252&c_id=/home/promotions-recommendations/element&c_uid=8704bd72-de49-46f8-9034-7a2f049f03a9"
@@ -44,13 +72,9 @@ Acepta JSON en el siguiente formato:
 ```
 
 
-Recibe una URL para realizar un acortamiento.
-Reemplace el valor con las URL que desea acortar.
-Como resultado obtienes el uniqueId.
-
-
-También puedes ir a la página con el uniqueId generado arriba, con el método GET
-
+Para ir a la pagina de la url acortada, debe enviar el uniqueId como parametro.
+Debe ser peticion get y para validar que se realice el redireccionamiento se debe 
+realizar la peticion desde un navegador
 ```
 GET http://localhost:8080/55def7
 ```
@@ -61,7 +85,7 @@ También puedes ver la información de trazabilidad, con el método GET
 http://localhost:8080/traceability
 ```
 
-Consultar la bitacora de uso de las URL Cortas, con el método GET
+Para consultar la bitacora de uso de las URL Cortas, con el método GET
 
 ```
 http://localhost:8080/accumulatedIp

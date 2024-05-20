@@ -1,9 +1,7 @@
 package co.com.url_shortener.usecase.url_shortener;
 
 import co.com.url_shortener.model.common.ex.ServiceException;
-import co.com.url_shortener.model.url_shortener.UrlShortener;
 import co.com.url_shortener.model.url_shortener.gateway.UrlShortenerRepository;
-import co.com.url_shortener.usecase.url_shortener.UrlShortenerUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
