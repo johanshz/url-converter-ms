@@ -52,6 +52,8 @@ public class UrlShortenerController {
             if (originalUrl != null && !originalUrl.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.FOUND)
                         .header("Location", originalUrl)
+                        .header("Cache-Control", "no-cache, no-store, must-revalidate")
+                        .header("Expires", "0")
                         .build();
             } else {
                 return ResponseEntity.notFound().build();
@@ -101,10 +103,9 @@ public class UrlShortenerController {
                 .map(accumulatedIp -> AccumulatedIpResponseDto.builder()
                         .ipOccurrences(accumulatedIp.getIpOccurrences())
                         .ip(accumulatedIp.getIp())
+                        .originalUrl(accumulatedIp.getOriginalUrl())
+                        .uniqueId(accumulatedIp.getUniqueId())
                         .build())
                 .collect(Collectors.toList());
     }
-
-
-
 }

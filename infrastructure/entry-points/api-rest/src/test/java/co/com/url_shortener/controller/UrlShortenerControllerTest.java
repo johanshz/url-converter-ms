@@ -1,9 +1,11 @@
 package co.com.url_shortener.controller;
 
+import co.com.url_shortener.controller.dto.AccumulatedIpResponseDto;
 import co.com.url_shortener.controller.dto.TraceabilityResponseDto;
 import co.com.url_shortener.controller.dto.UrlShortenerRequestDto;
 import co.com.url_shortener.controller.dto.UrlShortenerResponseDto;
 import co.com.url_shortener.model.common.ex.ServiceException;
+import co.com.url_shortener.model.traceability.AccumulatedIp;
 import co.com.url_shortener.model.traceability.Traceability;
 import co.com.url_shortener.usecase.handlers.GetOriginalUrlHandler;
 import co.com.url_shortener.usecase.handlers.TraceabilityHandler;
@@ -38,6 +40,7 @@ class UrlShortenerControllerTest {
 
     private final String UNIQUE_ID = "5f4s5d";
 
+    private final String TEXT = "text";
 
     @Test
     void urlShortenerTest() throws ServiceException {
@@ -63,7 +66,7 @@ class UrlShortenerControllerTest {
     @Test
     void getTraceabilityTest() throws ServiceException {
         List<Traceability> traceabilityList = new ArrayList<>();
-        final String TEXT = "TEXT";
+
         traceabilityList.add(Traceability.builder()
                         .ip(TEXT)
                         .registrationDate(TEXT)
@@ -73,5 +76,16 @@ class UrlShortenerControllerTest {
                 .thenReturn(traceabilityList);
         List<TraceabilityResponseDto> traceabilityListResponse = urlShortenerController.getTraceability();
         Assertions.assertEquals(traceabilityListResponse.get(0).getIp(),TEXT);
+    }
+    @Test
+    void getAccumulatedIpTest() throws ServiceException {
+        List<AccumulatedIp> accumulatedIpList = new ArrayList<>();
+        accumulatedIpList.add(AccumulatedIp.builder()
+                        .ip(TEXT)
+                        .ipOccurrences(1L)
+                .build());
+        Mockito.when(traceabilityHandler.getAccumulatedIp()).thenReturn(accumulatedIpList);
+        List<AccumulatedIpResponseDto> response = urlShortenerController.getAccumulatedIp();
+        Assertions.assertEquals(TEXT,response.get(0).getIp());
     }
 }

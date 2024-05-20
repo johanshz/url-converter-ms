@@ -6,6 +6,7 @@ import co.com.url_shortener.model.traceability.AccumulatedIp;
 import co.com.url_shortener.model.traceability.Traceability;
 import co.com.url_shortener.model.traceability.gateway.TraceabilityRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TraceabilityJpaAdapter implements TraceabilityRepository {
     private final TraceabilityJpaRepository traceabilityJpaRepository;
+
 
     @Override
     public void save(Traceability traceability) {

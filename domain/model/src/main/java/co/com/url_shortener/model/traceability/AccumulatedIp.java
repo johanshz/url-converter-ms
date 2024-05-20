@@ -8,9 +8,15 @@ import lombok.Data;
 public class AccumulatedIp {
     private String ip;
     private long ipOccurrences;
+    private String uniqueId;
+    private String originalUrl;
 
-    public AccumulatedIp(String ip, long ipOccurrences) {
+
+    public AccumulatedIp(String ip, long ipOccurrences,String uniqueId,String originalUrl) {
         this.ip = ip;
         this.ipOccurrences = ipOccurrences;
+        this.uniqueId = uniqueId;
+        this.originalUrl = originalUrl;
+
     }
 }

@@ -18,6 +18,7 @@ public class UrlShortenerUseCase implements UrlShortenerHandler {
     public String handle(String originalUrl) throws ServiceException {
         log.info("Starting long url conversion: " + originalUrl);
         try{
+
             return urlShortenerRepository.save(buildUrlShortener(originalUrl,generateUniqueId()));
         }catch (Exception e){
             log.severe("Error: " + e.getMessage());

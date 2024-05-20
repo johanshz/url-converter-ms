@@ -16,7 +16,9 @@ public class UrlShortenerJpaAdapter implements UrlShortenerRepository {
     @Override
     public String save(UrlShortener urlShortener) {
         try{
-            return  urlShortenerJpaRepository.save(buildUrlShortenerEntity(urlShortener)).getUniqueId();
+            return urlShortenerJpaRepository.findByOriginalUrl(urlShortener.getOriginalUrl())
+                    .map(UrlShortenerEntity::getUniqueId)
+                    .orElse(urlShortenerJpaRepository.save(buildUrlShortenerEntity(urlShortener)).getUniqueId());
         }catch (Exception e){
             e.printStackTrace();
             throw e;

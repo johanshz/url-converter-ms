@@ -19,4 +19,7 @@ import lombok.NoArgsConstructor;
 public class AccumulatedIpResponseDto {
     private String ip;
     private Long ipOccurrences;
+    private String uniqueId;
+    private String originalUrl;
+
 }
