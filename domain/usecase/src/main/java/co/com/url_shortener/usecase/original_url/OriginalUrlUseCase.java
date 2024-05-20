@@ -13,6 +13,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
 
 @Log
 @RequiredArgsConstructor
@@ -38,8 +41,10 @@ public class OriginalUrlUseCase implements GetOriginalUrlHandler {
 
     }
     private String getDate(){
-        LocalDate date = LocalDate.now();
-        return date.toString();
+        TimeZone defaultTimeZone = TimeZone.getDefault();
+        ZonedDateTime currentDateTime = ZonedDateTime.now(defaultTimeZone.toZoneId());
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+        return currentDateTime.format(formatter);
     }
     private String getIP() throws ServiceException{
         try {
