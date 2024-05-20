@@ -29,6 +29,7 @@ $ git clone https://github.com/johanshz/url-converter-ms.git
 
 #### **Construyendo el .jar**
 Finalmente, ejecute esto para construir el .jar .
+
 ```
 $ cd url-converter-ms
 $ ./gradlew build
