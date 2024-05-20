@@ -16,7 +16,7 @@ task explodedJar(type: Copy) {
 
 jar {
     // To disable the *-plain.jar
-    enabled = false
+    enabled = true
 }
 
 bootJar {

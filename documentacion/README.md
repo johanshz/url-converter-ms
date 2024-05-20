@@ -2,66 +2,41 @@
 
 **Author:**  Johan Fernando Sanchez Cano
 ****
-### **Content**
+### **Contentido**
 
 - [Before starting](#before-starting)
 - [Installing](#installing)
 - [How to use](#how-to-use)
 ****
-### **Before starting**
+### **Antes de empezar**
 
-Make sure you have this installed. (Gradle is optional because it's included in the repo.)
+Asegúrate de tener esto instalado. (Gradle es opcional porque está incluido en el repositorio).
 
-| **Requirements:**     | **How to obtain**                                                           |
-| --------------------- | --------------------------------------------------------------------------- |
-| **Java**              | Obtain it here:  https://www.java.com/en/download/help/download_options.html|
-| **Git**               | Guide: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git        |
-| **Gradle (optional)** | Guide here: https://gradle.org/install/                                     |
+| **Requerimientos:**   | **Como obtener**                                                              |
+|-----------------------|-------------------------------------------------------------------------------|
+| **Java**              | Consíguelo aquí:  https://www.java.com/en/download/help/download_options.html |
+| **Git**               | Guía: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git           |
+| **Gradle (optional)** | Guía aqui: https://gradle.org/install/                                        |
 
 ****
-### **Installing**
+### **Instalación**
 
-#### **Cloning the repository**
+#### **Clonando el repositorio**
 First you need to clone the repository.
 ```
 $ git clone https://github.com/johanshz/url-converter-ms.git
 ```
 
-#### **Building the .jar**
-Finally, execute this to build the .jar .
-```
-$ cd url-converter-ms
-$ ./gradlew build
-```
-****
-### **How to use**
 
-#### **Executing**
-Once the jar has been created navigate to the directory where you built the JAR file:
+#### **local**
 
-```
-$ cd bank-challenge/applications/app-service/build/libs
-```
-
-Then run the JAR file using the following command:
-
-```
-$ java -jar EverBank.jar
-```
-
-This will start the application and make it available at http://localhost:8080.
-
-
-
-#### **Local Endpoint**
-
-Once the application is running, you can test it by sending a POST request to the following endpoint:
+Una vez que la aplicación se esté ejecutando, puede probarla enviando una solicitud POST al siguiente punto final:
 
 ```
 POST http://localhost:8080/generarUrl
 ```
 
-This endpoint accepts a JSON payload in the following format:
+Acepta JSON en el siguiente formato:
 
 ```
 {
@@ -69,34 +44,35 @@ This endpoint accepts a JSON payload in the following format:
 }
 ```
 
-This payload represents a transaction that receives a URL to perform a shortening.
-Replace the value with the URLs you want to shorten.
-As a result you get the unique id.
+
+Recibe una URL para realizar un acortamiento.
+Reemplace el valor con las URL que desea acortar.
+Como resultado obtienes el uniqueId.
 
 
-You can also go to the page with the uniqueId generated above, with the GET method
+También puedes ir a la página con el uniqueId generado arriba, con el método GET
 
 ```
 GET http://localhost:8080/55def7
 ```
 
-You can also see the traceability information, with the GET method
+También puedes ver la información de trazabilidad, con el método GET
 
 ```
 http://localhost:8080/traceability
 ```
 
-Consult the log of use of the Short Urls, with the GET method
+Consultar la bitacora de uso de las URL Cortas, con el método GET
 
 ```
 http://localhost:8080/accumulatedIp
 ```
 
-#### **SQL ACCESS**
-You can also enter Sql Server and search for the tables created there.
-You can find the url_shortener and traceability tables created.
+#### **Acceso SQL**
+También puedes ingresar a Sql Server y buscar las tablas creadas allí.
+Puede encontrar las tablas url_shortener y de traceability creadas.
 
-In url_shortener table you can see original_url,unique_id and in traceability table you can see ip, registration_date and unique_id.
+En la tabla url_shortener puede ver la original_uri, el unique_id y en la tabla de traceability puede ver la ip,registration_date y el unique_id.
 
 
 ```

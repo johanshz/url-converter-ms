@@ -1,7 +1,14 @@
-FROM adoptopenjdk/openjdk11-openj9:alpine-slim
+# Usa una imagen base de OpenJDK
+FROM openjdk:17-jdk-slim
+
+# Crea un directorio temporal
 VOLUME /tmp
-COPY *.jar ms-url-shortener.jar
-ENV JAVA_OPTS=" -Xshareclasses:name=cacheapp,cacheDir=/cache,nonfatal -XX:+UseContainerSupport -XX:MaxRAMPercentage=70 -Djava.security.egd=file:/dev/./urandom"
-# Replace with a non-root user to avoid running the container with excessive privileges
-USER appuser
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS  -jar ms-url-shortener.jar" ]
+
+# Copia el archivo JAR en el contenedor
+COPY build/libs/ms-url-shortener.jar ms-url-shortener.jar
+
+# Establece los permisos para el archivo JAR
+RUN chmod 755 ms-url-shortener.jar
+
+# Establece el comando de inicio para ejecutar la aplicación
+ENTRYPOINT ["java", "-jar", "ms-url-shortener.jar"]

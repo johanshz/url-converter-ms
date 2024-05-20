@@ -23,7 +23,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import static org.mockito.ArgumentMatchers.anyString;
 
 @ExtendWith(MockitoExtension.class)
@@ -62,7 +61,6 @@ class UrlShortenerControllerTest {
         ResponseEntity<Void> response = urlShortenerController.getOriginalUrl(UNIQUE_ID);
         Assertions.assertEquals(response.getStatusCode().value(),STATUS_CODE_EXPECT);
     }
-
     @Test
     void getTraceabilityTest() throws ServiceException {
         List<Traceability> traceabilityList = new ArrayList<>();
