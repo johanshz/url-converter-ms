@@ -22,11 +22,10 @@ Asegúrate de tener esto instalado. (Gradle es opcional porque está incluido en
 ### **Instalación**
 
 #### **Clonando el repositorio**
-First you need to clone the repository.
+Clonar el repositorio.
 ```
 $ git clone https://github.com/johanshz/url-converter-ms.git
 ```
-
 
 #### **local**
 
